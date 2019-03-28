@@ -16,7 +16,7 @@ steps:
   - id: go_test
     name: "gcr.io/cloud-builders/go"
     args: ["test", "-v", "./...", "-coverprofile", "coverage.out"]
-    env: ["GOPATH=/gopath", "GO111MODULE=on"]
+    env: ["GOPATH=/workspace", "GO111MODULE=on"]
 
   - id: go_coverage
     name: "gcr.io/cloud-builders/go"
