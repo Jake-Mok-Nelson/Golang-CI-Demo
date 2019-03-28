@@ -18,16 +18,7 @@ steps:
     args: ["test","helloworld"]
     env: ["GOPATH=."]
 
-  - id: go_coverage
-    name: "gcr.io/cloud-builders/go"
-    entrypoint: "sh"
-    args:
-      - -c
-      - go tool cover -func=coverage.out | awk '/^total:/ { gsub(/%$/, ""); if ($3 < 98.8) {print "FAIL\x3A Coverage below threshold " $3; exit(1)} }'
-    env: ["GOPATH=/usr/local/go", "GO111MODULE=on", "GOFLAGS=-mod=vendor"]
-
-
   - id: go_security
     name: "securego/gosec"
     args: ["./..."]
-    env: ["GOPATH=/gopath", "GO111MODULE=on"]
+    env: ["GOPATH=.", "GO111MODULE=on"]
