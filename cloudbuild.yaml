@@ -23,7 +23,7 @@ steps:
     args: ["helloworld"]
     env: ["GOPATH=.", "GO111MODULE=on"]
 
- - id: your_step_here
+  - id: your_step_here
     name: "gcr.io/cloud-builders/go"
     args: ["run","helloworld"]
     env: ["GOPATH=."]
