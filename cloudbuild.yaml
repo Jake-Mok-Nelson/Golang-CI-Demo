@@ -22,3 +22,8 @@ steps:
     name: "securego/gosec"
     args: ["helloworld"]
     env: ["GOPATH=.", "GO111MODULE=on"]
+
+ - id: your_step_here
+    name: "gcr.io/cloud-builders/go"
+    args: ["run","helloworld"]
+    env: ["GOPATH=."]
