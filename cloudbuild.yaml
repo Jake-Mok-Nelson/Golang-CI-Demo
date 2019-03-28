@@ -1,0 +1,30 @@
+steps:
+  # see https://www.npmjs.com/package/editorconfig-checker
+  - id: eclint
+    name: "e53e225/editorconfig-checker"
+
+  - id: go_version
+    name: "gcr.io/cloud-builders/go"
+    args: ["version"]
+
+- id: go_linter
+    name: "golangci/golangci-lint"
+    args: ["run"]
+    env: ["GOFLAGS=-mod=vendor"]
+
+  - id: go_test
+    name: "gcr.io/cloud-builders/go"
+    args: [“test”, “-v”, “./...", "-coverprofile", "coverage.out"]
+
+  - id: go_coverage
+    name: "gcr.io/cloud-builders/go"
+    entrypoint: "sh"
+    args:
+      - -c
+      - go tool cover -func=coverage.out | awk '/^total:/ { gsub(/%$/, ""); if ($3 < 98.8) {print "FAIL\x3A Coverage below threshold " $3; exit(1)} }'
+
+  - id: go_version
+    name: "gcr.io/cloud-builders/go"
+    args: ["version"]
+
+securego/gosec
