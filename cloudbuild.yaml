@@ -6,7 +6,7 @@ steps:
   - id: go_version
     name: "gcr.io/cloud-builders/go"
     args: ["version"]
-    env: ["GOPATH=/gopath", "GO111MODULE=on"]
+    env: ["GOPATH=.", "GO111MODULE=on"]
 
   - id: go_linter
     name: "golangci/golangci-lint"
@@ -16,7 +16,7 @@ steps:
   - id: go_test
     name: "gcr.io/cloud-builders/go"
     args: ["test", "-v", "./...", "-coverprofile", "coverage.out"]
-    env: ["GOPATH=/usr/local/go", "GO111MODULE=on"]
+    env: ["GOPATH=.", "GO111MODULE=on"]
 
   - id: go_coverage
     name: "gcr.io/cloud-builders/go"
