@@ -15,7 +15,7 @@ steps:
 
   - id: go_test
     name: "gcr.io/cloud-builders/go"
-    args: ["test"]
+    args: ["test","helloworld"]
     env: ["GOPATH=."]
 
   - id: go_coverage
