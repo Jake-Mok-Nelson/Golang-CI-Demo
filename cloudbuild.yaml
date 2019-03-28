@@ -10,7 +10,7 @@ steps:
 
   - id: go_linter
     name: "golangci/golangci-lint"
-    args: ["run"]
+    args: ["golangci-lint","run"]
     env: ["GOFLAGS=-mod=vendor"]
 
   - id: go_test
