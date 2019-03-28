@@ -7,7 +7,7 @@ steps:
     name: "gcr.io/cloud-builders/go"
     args: ["version"]
 
-- id: go_linter
+  - id: go_linter
     name: "golangci/golangci-lint"
     args: ["run"]
     env: ["GOFLAGS=-mod=vendor"]
