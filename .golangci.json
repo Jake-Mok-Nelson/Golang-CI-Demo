@@ -23,8 +23,7 @@
     },
     "linters-settings": {
       "lll": {
-        "line-length": 120
+        "line-length": 150
       }
     }
   }
-  
